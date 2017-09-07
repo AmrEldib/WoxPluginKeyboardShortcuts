@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoxPluginKeyboardShortcuts", "WoxPluginKeyboardShortcuts\WoxPluginKeyboardShortcuts.csproj", "{E273F80E-3233-481C-8FB8-1572B0992187}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E273F80E-3233-481C-8FB8-1572B0992187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E273F80E-3233-481C-8FB8-1572B0992187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E273F80E-3233-481C-8FB8-1572B0992187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E273F80E-3233-481C-8FB8-1572B0992187}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3718E4C-77A8-4CA2-8759-FA30C7476D8E}
+	EndGlobalSection
+EndGlobal

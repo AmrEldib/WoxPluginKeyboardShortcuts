@@ -1,0 +1,12 @@
+﻿{
+	"ID": "9C0A213FCED641DCA0D5ACFF4332C1FF",
+	"ActionKeyword": "sc",
+	"Name": "Keyboard shortcuts",
+	"Description": "Helps you find and learn keybaord shortcuts much more easily",
+	"Author": "Amr Eldib",
+	"Version": "0.1.0",
+	"Language": "csharp",
+	"Website": "https://amreldib.com",
+	"ExecuteFileName": "WoxPluginKeyboardShortcuts.dll",
+	"IcoPath": "Images\\shortcut.png"
+}
