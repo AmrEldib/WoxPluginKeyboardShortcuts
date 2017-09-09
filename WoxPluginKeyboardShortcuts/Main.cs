@@ -1,19 +1,35 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Wox.Plugin;
 
 namespace WoxPluginKeyboardShortcuts
 {
     public class Main : IPlugin
     {
+        private string _PluginFolder;
+        
+        public string PluginFolder
+        {
+            get { return _PluginFolder; }
+            set { _PluginFolder = value; }
+        }
+        
+        public string ImageFolder
+        {
+            get { return @"Images\"; }
+        }
+
+        public string DataFolder    
+        {
+            get { return Path.Combine(this.PluginFolder, @"Data\"); }
+        }
+        
         public void Init(PluginInitContext context)
         {
-            
+            this.PluginFolder = context.CurrentPluginMetadata.PluginDirectory;
         }
         
         public List<Result> Query(Query query)
@@ -28,7 +44,8 @@ namespace WoxPluginKeyboardShortcuts
             // if user entered only one query word
             else if (query.Terms.Length <= 2)
             {
-                var dataFiles = from file in Directory.GetFiles(@"Plugins\WoxPluginKeyboardShortcuts\Data\", "*" + query.Terms[1] + "*.json")
+                
+                var dataFiles = from file in Directory.GetFiles(this.DataFolder, "*" + query.Terms[1] + "*.json")
                             select new FileInfo(file);
 
                 foreach (FileInfo dataFile in dataFiles)
@@ -37,7 +54,7 @@ namespace WoxPluginKeyboardShortcuts
                     {
                         Title = Path.GetFileNameWithoutExtension(dataFile.Name),
                         SubTitle = "Search its shortcuts",
-                        IcoPath = @"Images\" + Path.GetFileNameWithoutExtension(dataFile.Name) + ".png"
+                        IcoPath = this.ImageFolder + Path.GetFileNameWithoutExtension(dataFile.Name) + ".png"
                     };
 
                     results.Add(result);
@@ -46,7 +63,7 @@ namespace WoxPluginKeyboardShortcuts
             // if user entered more than one query word
             else
             {
-                var dataFiles = from file in Directory.GetFiles(@"Plugins\WoxPluginKeyboardShortcuts\Data\", "*" + query.Terms[1] + "*.json")
+                var dataFiles = from file in Directory.GetFiles(this.DataFolder, "*" + query.Terms[1] + "*.json")
                                 select new FileInfo(file);
 
                 foreach (FileInfo dataFile in dataFiles)
@@ -64,9 +81,9 @@ namespace WoxPluginKeyboardShortcuts
                         {
                             var result = new Result
                             {
-                                Title = Path.GetFileNameWithoutExtension(dataFile.Name) + ": " + sc.val + ": " + sc.key,
-                                SubTitle = sc.key,
-                                IcoPath = @"Images\" + Path.GetFileNameWithoutExtension(dataFile.Name) + ".png"
+                                Title = sc.key,
+                                SubTitle = Path.GetFileNameWithoutExtension(dataFile.Name) + ": " + sc.val,
+                                IcoPath = this.ImageFolder + Path.GetFileNameWithoutExtension(dataFile.Name) + ".png"
                             };
 
                             results.Add(result);
